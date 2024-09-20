@@ -1,7 +1,8 @@
 #include "memory.hpp"
 
 // Construtor da Memória
-Memory::Memory() {
+Memory::Memory()
+{
     // Inicializa toda a memória com zero
     for (int i = 0; i < 0x10000; i++)
     {
@@ -10,11 +11,13 @@ Memory::Memory() {
 }
 
 // Leitura de memória
-unsigned char Memory::read(unsigned short address) {
+unsigned char Memory::read(unsigned short address)
+{
     return memory[address];
 }
 
 // Escrita de memória
-void Memory::write(unsigned short address, unsigned char value) {
+void Memory::write(unsigned short address, unsigned char value)
+{
     memory[address] = value;
 }

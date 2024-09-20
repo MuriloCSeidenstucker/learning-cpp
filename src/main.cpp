@@ -1,6 +1,6 @@
 #include <iostream>
-#include "cpu.hpp"
-#include "memory.hpp"
+#include "cpu/cpu.hpp"
+#include "memory/memory.hpp"
 
 int main() {
     CPU cpu;
