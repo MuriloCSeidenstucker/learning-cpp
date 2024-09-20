@@ -80,7 +80,7 @@ code .
 ```
 
 **2. Ajuste o Caminho no tasks.json:**
-- Abra o arquivo** .vscode/tasks.json** no VSCode e altere o caminho do arquivo main.cpp e o caminho de saída do executável para refletir os diretórios no seu PC.
+- Abra o arquivo `.vscode/tasks.json` no VSCode e altere o caminho do arquivo `*.cpp` e o caminho de saída do executável para refletir os diretórios no seu PC:
 ```
     {
     	"label": "Build",
@@ -88,14 +88,31 @@ code .
     	"command": "g++",
     	"args": [
     		"-g",
-    		"C:/seu_caminho_para_o_projeto/src/main.cpp",  // ajuste aqui
+    		"C:/seu_caminho_para_o_projeto/src/*.cpp",  // ajuste aqui
     		"-o",
     		"C:/seu_caminho_para_o_projeto/bin/emulator.exe"  // e aqui
     	],
     	...
     }
 ```
-**3. Compilando:**
+ - **Atenção**: Nem todos os ambientes suportam essa sintaxe de wildcard(`*.cpp`), então pode não funcionar em todos os casos. Se esse método não funcionar, você pode considerar criar um script de compilação.
+
+**3. Criar um script de compilação(SE FOR O CASO):**
+No caso do seu ambiente não suportar a sintaxe de wildcard anterior, tente isso, caso contrário pule essa etapa.
+
+-  Você pode criar um pequeno script (como um arquivo `.sh` ou `.bat`) que compile todos os arquivos e chamar esse script a partir do `tasks.json`. Por exemplo, crie um arquivo chamado `compile.bat` com o seguinte conteúdo:
+```bat
+@echo off
+g++ -g C:/seu_caminho_para_o_projeto/src/*.cpp -o C:/seu_caminho_para_o_projeto/bin/emulator.exe
+```
+- Depois, você chamaria esse script no `tasks.json`:
+```json
+"args": [
+	"D:/Projects/LearningCPP/compile.bat"
+],
+```
+
+**4. Compilando:**
 - Depois de ajustar os caminhos, pressione Ctrl + Shift + B no VSCode para compilar o projeto. Isso vai gerar o arquivo executável emulator.exe na pasta bin do projeto.
 
 ### 5. Executando o Emulador 🕹️

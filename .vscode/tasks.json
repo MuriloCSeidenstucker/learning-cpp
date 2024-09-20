@@ -7,7 +7,7 @@
             "command": "g++",              // O compilador que você deseja usar (g++)
             "args": [
                 "-g",                      // Gera informações de depuração
-                "D:/Projects/LearningCPP/src/main.cpp",  // O arquivo principal que será compilado
+                "D:/Projects/LearningCPP/src/*.cpp",  // O arquivo principal que será compilado
                 "-o",                      // Nome do arquivo de saída (executável)
                 "D:/Projects/LearningCPP/bin/emulator.exe"  // Caminho de saída do executável
             ],
