@@ -4,20 +4,42 @@
         {
             "label": "Build",
             "type": "shell",
-            "command": "g++",              // O compilador que você deseja usar (g++)
+            "command": "g++",
             "args": [
-                "-g",                      // Gera informações de depuração
-                "D:/Projects/LearningCPP/src/*.cpp",  
-                "D:/Projects/LearningCPP/src/cpu/*.cpp",  
-                "D:/Projects/LearningCPP/src/memory/*.cpp",  
-                "-o",                      // Nome do arquivo de saída (executável)
-                "D:/Projects/LearningCPP/bin/emulator.exe"  // Caminho de saída do executável
+                "-g",
+                "D:/Projects/LearningCPP/src/*.cpp",
+                "D:/Projects/LearningCPP/src/cpu/*.cpp",
+                "D:/Projects/LearningCPP/src/memory/*.cpp",
+                "-o",
+                "D:/Projects/LearningCPP/bin/emulator.exe"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++.exe arquivo de build ativo",
+            "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
             ],
             "group": {
-                "kind": "build",           // Define como uma tarefa de compilação
-                "isDefault": true          // Define essa tarefa como padrão
+                "kind": "build",
+                "isDefault": true
             },
-            "problemMatcher": ["$gcc"]     // Ajuda a capturar e mostrar erros do compilador
+            "detail": "Tarefa gerada pelo Depurador."
         }
     ]
 }
