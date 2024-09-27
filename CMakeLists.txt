@@ -8,11 +8,15 @@ set(CMAKE_CXX_STANDARD 14)            # Defina a versão do C++
 include_directories(src)
 include_directories(${CMAKE_SOURCE_DIR}/include)  # Diretório include da SDL2
 
+# Diretório de instruções
+file(GLOB INSTRUCTION_SOURCES "src/instructions/*.cpp")
+
 # Liste os arquivos fonte
 set(SOURCES
     src/main.cpp
     src/cpu/cpu.cpp
     src/memory/memory.cpp
+    ${INSTRUCTION_SOURCES}  # Adicione as instruções
 )
 
 # Adicione o executável do emulador
@@ -28,19 +32,22 @@ FetchContent_Declare(
   googletest
   URL https://github.com/google/googletest/archive/refs/tags/release-1.12.1.zip
 )
-# For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-
 FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-# Adicione o executável para testes, com os mesmos fontes do emulador
+# Adicione o executável de testes
 add_executable(emulator_tests
     tests/test_cpu.cpp
     tests/test_memory.cpp
+)
+
+# Adicione as mesmas fontes do emulador (CPU e Memory) e instruções aos testes
+target_sources(emulator_tests PRIVATE
     src/cpu/cpu.cpp
     src/memory/memory.cpp
+    ${INSTRUCTION_SOURCES}
 )
 
 # Link do Google Test com o executável de teste
